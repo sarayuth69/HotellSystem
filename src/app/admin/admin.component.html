@@ -1,0 +1,81 @@
+<br>
+<br>
+<div class="container">
+    <div class="card" style="width: 60rem;">
+        <div class="card-body">
+            <div class="card-header">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">
+                    เพิ่มห้อง
+                </button>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <button type="button" class="btn btn-outline-success" [routerLink]="['/manageroom']">จัดการห้องพัก</button>
+            </div>
+
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">หมายเลขห้องพัก</th>
+                        <th scope="col">ชื่อผู้จอง</th>
+                        <th scope="col">สถานะ</th>
+                        <th scope="col">การชำระเงิน</th>
+                        <th scope="col">จัดการ</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="text-center"></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <button type="button" class="btn btn-warning">อนุมัติ</button>
+                            &nbsp;
+                            <button type="button" class="btn btn-warning">ไม่อนุมัติ</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                    <form>
+                            <div class="form-row">
+                              <div class="col-md-7 mb-3">
+                                <label for="validationDefault01">หมายเลขห้องพัก</label>
+                                <input type="text" class="form-control"  [formControl]="Room_ID" >
+                              </div>
+                            </div>
+                            <div class="form-row">
+                            <div class="col-md-7 mb-3">
+                                    <label for="validationDefault02">สถานะ</label>
+                                    <select id="inputState" class="form-control"  [formControl]="status_ID" >
+                                            <option selected>กรุณาเลือก</option>
+                                            <option value="1">ว่าง</option>
+                                            <option value="0">ไม่ว่าง</option>
+                                        </select>
+                                  </div>
+                                </div>
+                          </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
+                <button type="button" class="btn btn-primary" (click)="AddRoom()">บันทึก</button>
+            </div>
+        </div>
+    </div>
+</div>
