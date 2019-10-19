@@ -8,6 +8,9 @@
         <thead>
           <tr>
             <th scope="col">หมายเลขห้องพัก</th>
+            <th scope="col">ประเภทห้องพัก</th>
+            <th scope="col">ชั้น</th>
+            <th scope="col">บริการ</th>
             <th scope="col">สถานะ</th>
             <th scope="col">จัดการ</th>
           </tr>
@@ -15,6 +18,9 @@
         <tbody *ngFor="let item of showdata ; let i = index">
           <tr>
             <td class="text-center">{{item.Room_ID}}</td>
+            <td>{{item.TroomName}}</td>
+            <td>{{item.floor}}</td>
+            <td>{{item.Decoration}}</td>
             <td>{{item.statusName}}</td>
             <td >
 

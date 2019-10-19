@@ -10,16 +10,30 @@
         <thead>
           <tr>
             <th scope="col">หมายเลขห้องพัก</th>
+            <th scope="col">ประเภทห้องพัก</th>
+            <th scope="col">ชั้น</th>
+            <th scope="col">บริการ</th>
             <th scope="col">สถานะ</th>
             <th scope="col">จัดการ</th>
           </tr>
         </thead>
         <tbody *ngFor="let item of showdata ; let i = index" >
           <tr>
-                <td class="text-center">{{item.Room_ID}}</td>
-                <td>{{item.statusName}}</td>
+            <td class="text-center">{{item.Room_ID}}</td>
+            <td>{{item.TroomName}}</td>
+            <td>{{item.floor}}</td>
+            <td>{{item.Decoration}}</td>
+            <td>{{item.statusName}}</td>
             <td >
-                    <button type="button" class="btn btn-outline-warning">EDIT</button>
+           
+                    <!-- Button trigger modal -->
+<button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#exampleModal8"
+(click)="updatePosition(item.Room_ID,item.statusName,item.Troom_ID,item.floor,item.Decoration)">
+  EDIT
+</button>
+
+<!-- Modal -->
+
                     &nbsp;
                     <button type="button" class="btn btn-outline-danger" (click)="delete(item.Room_ID,
                     item.statusName)">DELETE</button>
@@ -30,4 +44,63 @@
         </div>
       </div>
 
+    </div>
+
+    <div class="modal fade" id="exampleModal8" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-row">
+                  <div class="col-md-7 mb-3">
+                      <label for="validationDefault01">หมายเลขห้องพัก</label>
+                      <input type="text" class="form-control" >
+                  </div>
+              </div>
+              <div class="form-row">
+                  <div class="col-md-7 mb-3">
+                      <label for="validationDefault02">ประเภทห้อง</label>
+                      <select id="inputState" class="form-control" >
+                  
+                          <option value="1">ห้องพัดลม</option>
+                          <option value="0">ห้องแอร์</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="form-row">
+                  <div class="col-md-7 mb-3">
+                      <label for="validationDefault03">ชั้น</label>
+                      <input type="text" class="form-control" >
+                  </div>
+              </div>
+              <div class="form-row">
+                  <div class="col-md-7 mb-3">
+                      <label for="validationDefault04">ของที่มีให้</label>
+                      <input type="text" class="form-control" >
+                  </div>
+              </div>
+              <div class="form-row">
+                  <div class="col-md-7 mb-3">
+                      <label for="validationDefault05">สถานะ</label>
+                      <select id="inputState" [formControl]="floor" class="form-control" >
+                      
+                          <option value="1">ว่าง</option>
+                          <option value="0">ไม่ว่าง</option>
+                      </select>
+                  </div>
+              </div>
+          </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
     </div>

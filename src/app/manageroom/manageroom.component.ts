@@ -28,7 +28,12 @@ import 'sweetalert2/src/sweetalert2.scss';
 export class ManageroomComponent implements OnInit {
   showdata;
   deleteroom;
-
+   edit;
+  Room_ID = new FormControl('');
+  status_ID = new FormControl('');
+  Troom_ID = new FormControl('');
+  floor = new FormControl('');
+  Decoration = new FormControl('');
   public Room_ID_show;
   public statusName_show;
   constructor(
@@ -88,6 +93,53 @@ export class ManageroomComponent implements OnInit {
         }, 2000);
       }
     })
+  }
+
+
+
+  updatePosition(
+    Room_ID,status_ID,Troom_ID,Decoration,floor
+  ) {
+    this.Room_ID = new FormControl(Room_ID);
+    this.status_ID = new FormControl(status_ID);
+    this.Troom_ID = new FormControl(Troom_ID);
+    this.floor = new FormControl(floor);
+    this.Decoration = new FormControl(Decoration);
+  }
+  public updateEmpposition() {
+    const body =
+      'Room_ID=' + this.Room_ID.value +
+      '&status_ID=' + this.status_ID.value
+      '&Troom_ID=' + this.Troom_ID.value
+      '&floor=' + this.floor.value
+      '&Decoration=' + this.Decoration.value
+    console.log(body);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded'
+    });
+    this.http
+      .post('http://localhost/Leavewebservice/API/UpdatePosition.php', body, {
+        headers: headers
+      })
+      .subscribe(
+        (data: any) => {
+          console.log(data);
+          this.edit = data[0];
+        },
+        (error: any) => {
+          console.log(error);
+        }
+      );
+    Swal.fire({
+      position: 'center',
+      type: 'success',
+      title: 'แก้ไขเรียบร้อย',
+      showConfirmButton: false,
+      timer: 1500
+    })
+    setTimeout(() => {
+      window.location.reload();
+    }, 2000);
   }
 
 

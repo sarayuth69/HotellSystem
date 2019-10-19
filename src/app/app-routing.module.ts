@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: 'home', loadChildren: './home/home.module#HomeModule' },
   { path: 'booking', loadChildren: './booking/booking.module#BookingModule' },
   { path: 'admin', loadChildren: './admin/admin.module#AdminModule' },
+  { path: 'login', loadChildren: './login/login.module#LoginModule' },
   { path: 'manageroom', loadChildren: './manageroom/manageroom.module#ManageroomModule' },
   { path: '**', redirectTo: '/home' },
 ];
