@@ -28,12 +28,15 @@ import 'sweetalert2/src/sweetalert2.scss';
 export class ManageroomComponent implements OnInit {
   showdata;
   deleteroom;
-   edit;
+  edit;
+  room: any;
+
   Room_ID = new FormControl('');
   status_ID = new FormControl('');
   Troom_ID = new FormControl('');
   floor = new FormControl('');
   Decoration = new FormControl('');
+  Price = new FormControl('');
   public Room_ID_show;
   public statusName_show;
   constructor(
@@ -53,6 +56,47 @@ export class ManageroomComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  AddRoom() {
+    const body = 'Room_ID=' + this.Room_ID.value
+      + '&status_ID=' + this.status_ID.value
+      + '&Troom_ID=' + this.Troom_ID.value
+      + '&floor=' + this.floor.value
+      + '&Decoration=' + this.Decoration.value
+    + '&Price=' + this.Price.value;
+
+    console.log(body);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/x-www-form-urlencoded'
+    });
+    this.http
+      .post('http://localhost/servicehotell/API/InsertRoom.php', body, {
+        headers
+      })
+      .subscribe(
+        (data: any) => {
+          console.log(data[0]);
+          this.room = data;
+          Swal.fire({
+            position: 'top-end',
+            type: 'success',
+            title: 'เพิ่มห้องเรียบร้อย',
+            showConfirmButton: false,
+            timer: 1500
+
+          });
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000);
+
+        },
+        (error: any) => {
+          console.log(error);
+        }
+      );
+
+
   }
 
   delete(id, name) {
@@ -97,28 +141,30 @@ export class ManageroomComponent implements OnInit {
 
 
 
-  updatePosition(
-    Room_ID,status_ID,Troom_ID,Decoration,floor
+  updateroom(
+    Room_ID, status_ID, Troom_ID, Decoration, floor, Price
   ) {
     this.Room_ID = new FormControl(Room_ID);
     this.status_ID = new FormControl(status_ID);
     this.Troom_ID = new FormControl(Troom_ID);
     this.floor = new FormControl(floor);
     this.Decoration = new FormControl(Decoration);
+    this.Price = new FormControl(Price);
   }
-  public updateEmpposition() {
+  public updateR() {
     const body =
-      'Room_ID=' + this.Room_ID.value +
-      '&status_ID=' + this.status_ID.value
-      '&Troom_ID=' + this.Troom_ID.value
-      '&floor=' + this.floor.value
-      '&Decoration=' + this.Decoration.value
+      'Room_ID=' + this.Room_ID.value 
+     + '&status_ID=' + this.status_ID.value
+    +'&Troom_ID=' + this.Troom_ID.value
+    +'&floor=' + this.floor.value
+   + '&Decoration=' + this.Decoration.value
+    +'&Price=' + this.Price.value
     console.log(body);
     const headers = new HttpHeaders({
       'Content-Type': 'application/x-www-form-urlencoded'
     });
     this.http
-      .post('http://localhost/Leavewebservice/API/UpdatePosition.php', body, {
+      .post('http://localhost/servicehotell/API/UpdateRoom.php', body, {
         headers: headers
       })
       .subscribe(

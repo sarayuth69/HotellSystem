@@ -5,6 +5,10 @@
         <div class="card-body">
                 <div class="card-header">
                     จัดการห้องพัก
+                     <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">
+                  เพิ่มห้อง
+              </button>
                 </div>
 <table class="table table-bordered">
         <thead>
@@ -14,6 +18,7 @@
             <th scope="col">ชั้น</th>
             <th scope="col">บริการ</th>
             <th scope="col">สถานะ</th>
+            <th scope="col">ราคา</th>
             <th scope="col">จัดการ</th>
           </tr>
         </thead>
@@ -24,11 +29,12 @@
             <td>{{item.floor}}</td>
             <td>{{item.Decoration}}</td>
             <td>{{item.statusName}}</td>
+            <td>{{item.Price}}</td>
             <td >
            
                     <!-- Button trigger modal -->
 <button type="button" class="btn btn-outline-warning" data-toggle="modal" data-target="#exampleModal8"
-(click)="updatePosition(item.Room_ID,item.statusName,item.Troom_ID,item.floor,item.Decoration)">
+(click)="updateroom(item.Room_ID,item.statusName,item.Troom_ID,item. Decoration,item.floor,item.Price)">
   EDIT
 </button>
 
@@ -60,14 +66,13 @@
               <div class="form-row">
                   <div class="col-md-7 mb-3">
                       <label for="validationDefault01">หมายเลขห้องพัก</label>
-                      <input type="text" class="form-control" >
+                      <input type="text" class="form-control" [formControl]="Room_ID">
                   </div>
               </div>
               <div class="form-row">
                   <div class="col-md-7 mb-3">
                       <label for="validationDefault02">ประเภทห้อง</label>
-                      <select id="inputState" class="form-control" >
-                  
+                      <select id="inputState" class="form-control" [formControl]="Troom_ID">
                           <option value="1">ห้องพัดลม</option>
                           <option value="0">ห้องแอร์</option>
                       </select>
@@ -76,20 +81,25 @@
               <div class="form-row">
                   <div class="col-md-7 mb-3">
                       <label for="validationDefault03">ชั้น</label>
-                      <input type="text" class="form-control" >
+                      <input type="text" class="form-control"[formControl]="floor" >
                   </div>
               </div>
               <div class="form-row">
+                <div class="col-md-7 mb-3">
+                    <label for="validationDefault03">ราคา</label>
+                    <input type="text" class="form-control"[formControl]="Price" >
+                </div>
+            </div>
+              <div class="form-row">
                   <div class="col-md-7 mb-3">
-                      <label for="validationDefault04">ของที่มีให้</label>
-                      <input type="text" class="form-control" >
+                      <label for="validationDefault04">บริการ</label>
+                      <input type="text" class="form-control"[formControl]="Decoration" >
                   </div>
               </div>
               <div class="form-row">
                   <div class="col-md-7 mb-3">
                       <label for="validationDefault05">สถานะ</label>
-                      <select id="inputState" [formControl]="floor" class="form-control" >
-                      
+                      <select id="status_ID"  class="form-control" [formControl]="status_ID">
                           <option value="1">ว่าง</option>
                           <option value="0">ไม่ว่าง</option>
                       </select>
@@ -99,8 +109,74 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
+            <button type="button" class="btn btn-primary" (click)="updateR()">Save changes</button>
           </div>
         </div>
       </div>
     </div>
+
+
+    
+    <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-row">
+                  <div class="col-md-7 mb-3">
+                      <label for="validationDefault06">หมายเลขห้องพัก</label>
+                      <input type="text" class="form-control"  [formControl]="Room_ID" >
+                  </div>
+              </div>
+              <div class="form-row">
+                  <div class="col-md-7 mb-3">
+                      <label for="validationDefault07">ประเภทห้อง</label>
+                      <select id="inputState" class="form-control"  [formControl]="Troom_ID" >
+                          <option value="1">ห้องพัดลม</option>
+                          <option value="0">ห้องแอร์</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="form-row">
+                  <div class="col-md-7 mb-3">
+                      <label for="validationDefault08">ชั้น</label>
+                      <input type="text" class="form-control"  [formControl]="floor" >
+                  </div>
+              </div>
+              <div class="form-row">
+                  <div class="col-md-7 mb-3">
+                      <label for="validationDefault09">บริการ</label>
+                      <input type="text" class="form-control"   [formControl]="Decoration">
+                  </div>
+              </div>
+              <div class="form-row">
+                <div class="col-md-7 mb-3">
+                    <label for="validationDefault09">ราคา</label>
+                    <input type="text" class="form-control"   [formControl]="Price">
+                </div>
+            </div>
+              <div class="form-row">
+                  <div class="col-md-7 mb-3">
+                      <label for="validationDefault10">สถานะ</label>
+                      <select id="inputState"  class="form-control"  [formControl]="status_ID" >
+                          <option value="1">ว่าง</option>
+                          <option value="0">ไม่ว่าง</option>
+                      </select>
+                  </div>
+              </div>
+          </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary" (click)="AddRoom()">Save changes</button>
+          </div>
+        </div>
+      </div>
+    </div>
+ 

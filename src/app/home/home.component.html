@@ -1,16 +1,96 @@
 <br>
 <br>
 <div class="container">
+    <!-- <div class="card-deck">
+        <div class="card">
+          <img src="assets\image\1.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+          </div>
+        </div>
+        <div class="card">
+          <img src="assets\image\3.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+          </div>
+         
+        </div>
+        <div class="card">
+          <img src="assets\image\4.jpg" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+          </div>
+         
+        </div>
+      </div> -->
+      <br>
+      <!-- <div class="card-deck">
+      <div class="card mb-3"  *ngFor="let item of showdata ; let i = index">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+                <img src="assets\image\4.jpg"  width="110" height="200px">
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <h5 class="card-title">หมายเลขห้องพัก : {{item.Room_ID}} </h5>
+                <p class="card-text">ประเภทห้องพัก : {{item.TroomName}}  ชั้นที่  {{item.floor}} </p>
+                <p class="card-text">บริการ : {{item.Decoration}} </p> 
+                  <p class="card-text"> ราคา {{item.Price}}  สถานะ {{item.statusName}} </p>
+                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal2"
+                (click)="BookingModel(item.Room_ID,item.Troom_ID,item.floor,item.Decoration,item.statusName,item.Price)">
+                    จองห้องพัก
+                  </button> 
+              </div>
+            </div>
+          </div>
+        </div>
+        </div> -->
+
+        <div class="card-deck" >
+            <div class="card"  *ngFor="let item of showdata ; let i = index">
+              <img src="assets\image\4.jpg" class="card-img-top" alt="...">
+              <div class="card-body">
+                  <h5 class="card-title">หมายเลขห้องพัก : {{item.Room_ID}} </h5>
+                  <p class="card-text">ประเภทห้องพัก : {{item.TroomName}}  ชั้นที่  {{item.floor}} </p>
+                  <p class="card-text">บริการ : {{item.Decoration}} </p> 
+                    <p class="card-text"> ราคา {{item.Price}}  สถานะ {{item.statusName}} </p>
+                  
+              </div>
+              <div class="card-footer">
+                  <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal2"
+                  (click)="BookingModel(item.Room_ID,item.Troom_ID,item.floor,item.Decoration,item.statusName,item.Price)">
+                      จองห้องพัก
+                    </button> 
+              </div>
+            </div>
+        
+          </div>
+
+
+        <!-- <div class="card mb-3" *ngFor="let item of showdata ; let i = index">
+            <img src="assets\image\4.jpg"  width="600" height="200px">
+            <div class="card-body">
+                <h5 class="card-title">หมายเลขห้องพัก : {{item.Room_ID}} </h5>
+                <p class="card-text">ประเภทห้องพัก : {{item.TroomName}}  ชั้นที่  {{item.floor}} </p>
+                <p class="card-text">บริการ : {{item.Decoration}} </p> 
+                  <p class="card-text"> ราคา {{item.Price}}  สถานะ {{item.statusName}} </p>
+                <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal2"
+                (click)="BookingModel(item.Room_ID,item.Troom_ID,item.floor,item.Decoration,item.statusName,item.Price)">
+                    จองห้องพัก
+                  </button> 
+            </div>
+          </div> -->
 <div class="card" style="width: 60rem;">
         <div class="card-body">
-        
-<table class="table table-bordered">
+     รายละเอียดการจองห้องพัก ให้จองล่วงหน้าอย่างน้อย 3 วัน และรอผลการจอง 2 วัน
+<!-- <table class="table table-bordered">
         <thead>
           <tr>
             <th scope="col">หมายเลขห้องพัก</th>
             <th scope="col">ประเภทห้องพัก</th>
             <th scope="col">ชั้น</th>
             <th scope="col">บริการ</th>
+            <th scope="col">ราคา</th>
             <th scope="col">สถานะ</th>
             <th scope="col">จัดการ</th>
           </tr>
@@ -21,39 +101,99 @@
             <td>{{item.TroomName}}</td>
             <td>{{item.floor}}</td>
             <td>{{item.Decoration}}</td>
+            <td>{{item.Price}}</td>
             <td>{{item.statusName}}</td>
             <td >
 
-                <!-- Button trigger modal -->
-<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal2">
+            
+<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal2"
+(click)="BookingModel(item.Room_ID,item.Troom_ID,item.floor,item.Decoration,item.statusName,item.Price)">
     จองห้องพัก
   </button>
   
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          คุณจะจ้องห้อง    หรือไม่
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
-      </div>
-    </div>
-  </div>
+
+  
             </td>
           </tr>
         </tbody>
-      </table>
+      </table> -->
         </div>
       </div>
 
     </div>
+
+    <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <form>
+                <div class="form-row">
+                  <div class="col-md-4 mb-3">
+                    <label for="validationDefault01">หมายเลขห้องพัก</label>
+                    <input type="text" class="form-control" id="validationDefault01" 
+                      [formControl]="Room_ID">
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label for="validationDefault02">ประเภทห้องพัก</label>
+                    <input type="text" class="form-control" id="validationDefault02"   
+                    [formControl]="Troom_ID">
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <label for="validationDefault03">ชั้นที่</label>
+                    <div class="input-group" >
+                   
+                      <input type="text" class="form-control" id="validationDefault03"   [formControl]="floor">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-row">
+                  <div class="col-md-6 mb-3">
+                    <label for="validationDefault04">บริการ</label>
+                    <input type="text" class="form-control" id="validationDefault04"   [formControl]="Decoration">
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="validationDefault04">สถานะ</label>
+                    <input type="text" class="form-control" id="validationDefault55"   [formControl]="statusName">
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="validationDefault04">ราคา</label>
+                    <input type="text" class="form-control" id="validationDefault88"   [formControl]="Price">
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="validationDefault05">วันเข้าพัก</label>
+                    <input type="date" class="form-control" id="validationDefault05"   [formControl]="DateStart">
+                  </div>
+                
+                  <div class="col-md-6 mb-3">
+                    <label for="validationDefault07">วันออก</label>
+                    <input type="date" class="form-control" id="validationDefault07"   [formControl]="DateLast">
+                  </div>
+             
+                  <div class="col-md-6 mb-3">
+                    <label for="validationDefault0">จำนวนคน</label>
+                    <input type="text" class="form-control" id="validationDefault09"   [formControl]="Number_of_people">
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="validationDefault10">ชื่อผู้จอง</label>
+                    <input type="text" class="form-control" id="validationDefault10"   [formControl]="BookingName">
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <label for="validationDefault1">เบอร์โทรที่สามารถติดต่อได้</label>
+                    <input type="text" class="form-control" id="validationDefault11"   [formControl]="Tel">
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">ยกเลิก</button>
+              <button type="button" class="btn btn-primary" (click)="Booking()">จองห้องพัก</button>
+            </div>
+          </div>
+        </div>
+      </div>

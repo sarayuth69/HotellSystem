@@ -38,6 +38,10 @@ export class LoginComponent implements OnInit {
       }).then(()=>{
         this.router.navigate(['/admin']);
         localStorage.setItem('Role','addmin');
+        setTimeout(() => {
+          window.location.reload()
+        }, 2000);
+       
       })
        
     }

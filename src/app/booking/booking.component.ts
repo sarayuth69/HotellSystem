@@ -15,7 +15,7 @@ import {
   styleUrls: ['./booking.component.scss']
 })
 export class BookingComponent implements OnInit {
-
+  showBooking;
   constructor(
     public router: Router  ,
     public route: ActivatedRoute,
@@ -24,6 +24,16 @@ export class BookingComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.http.get('http://localhost/servicehotell/API/GetBooking.php').subscribe(
+      (data: any) => {
+        console.log(data);
+        this.showBooking = data;
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
+    
   }
 
 }

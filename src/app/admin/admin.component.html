@@ -4,12 +4,7 @@
     <div class="card" style="width: 60rem;">
         <div class="card-body">
             <div class="card-header">
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">
-                    เพิ่มห้อง
-                </button>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                <button type="button" class="btn btn-outline-success" [routerLink]="['/manageroom']">จัดการห้องพัก</button>
+               
             </div>
 
             <table class="table table-bordered">
@@ -17,21 +12,26 @@
                     <tr>
                         <th scope="col">หมายเลขห้องพัก</th>
                         <th scope="col">ชื่อผู้จอง</th>
-                        <th scope="col">สถานะ</th>
-                        <th scope="col">การชำระเงิน</th>
+                        <th scope="col">ประเภทห้อง</th>
+                        <th scope="col">วันที่เข้า-ออก</th>
+                        <th scope="col">ราคา</th>
                         <th scope="col">จัดการ</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody *ngFor="let item of showBooking; let i = index">
                     <tr>
-                        <td class="text-center"></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td class="text-center" >{{item.Room_ID}}</td>
+                        <td>{{item.BookingName}}</td>
+                        <td>{{item.TroomName}}</td>
+                        <td>{{item.DateStart}} / {{item.DateLast}} </td>
+                        <td>{{item.Price}}  </td>
+                       
                         <td>
-                            <button type="button" class="btn btn-warning">อนุมัติ</button>
+                            <button type="button" class="btn btn-warning" (click)="updatestatus(item.Room_ID)" (click)="updateBookingS(item.Booking_ID)">อนุมัติ</button>
                             &nbsp;
-                            <button type="button" class="btn btn-warning">ไม่อนุมัติ</button>
+                            <button type="button" class="btn btn-warning"(click)="updatebooking(item.Booking_ID)">ไม่อนุมัติ</button>
+                            &nbsp;
+                            <button type="button" class="btn btn-danger" (click)="deletebooking(item.Booking_ID,item.BookingName)">Danger</button>
                         </td>
                     </tr>
                 </tbody>

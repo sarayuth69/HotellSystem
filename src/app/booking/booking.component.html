@@ -8,17 +8,22 @@
         <thead>
           <tr>
             <th scope="col">หมายเลขห้องพัก</th>
-            <th scope="col">สถานะ</th>
-            <th scope="col">จัดการ</th>
+            <th scope="col">ชื่อผู้จอง</th>
+            <th scope="col">ประเภทห้อง</th>
+            <th scope="col">วันที่เข้า-ออก</th>
+            <th scope="col">ราคา</th>
+            <th scope="col">ผลการอนุมัติ</th>
+           
           </tr>
         </thead>
-        <tbody >
+        <tbody *ngFor="let item of showBooking; let i = index">
           <tr>
-            <td class="text-center"></td>
-            <td></td>
-            <td >
-                <button type="button" class="btn btn-warning">จอง</button>
-            </td>
+            <td class="text-center" >{{item.Room_ID}}</td>
+                        <td>{{item.BookingName}}</td>
+                        <td>{{item.TroomName}}</td>
+                        <td>{{item.DateStart}} / {{item.DateLast}} </td>
+                        <td>{{item.Price}}  </td>
+                        <td>{{item.BookingSName}}  </td>
           </tr>
         </tbody>
       </table>
