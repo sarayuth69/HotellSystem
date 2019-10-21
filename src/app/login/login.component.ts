@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('Role','addmin');
         setTimeout(() => {
           window.location.reload()
-        }, 2000);
+        }, 500);
        
       })
        

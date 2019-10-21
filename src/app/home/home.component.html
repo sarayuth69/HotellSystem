@@ -45,9 +45,20 @@
           </div>
         </div>
         </div> -->
+        <div class="card" style="width: 60rem;">
+            <div class="card-body">
+         <h4>รายละเอียดการจองห้องพัก ให้จองล่วงหน้าอย่างน้อย 3 วัน และรอผลการจอง 2 วัน</h4>
+         <h5>สอบถามโทร : 0872605597</h5>    <h5>ผู้จัดการโรงแรม : คุณ ศรายุทธ ไกรษร</h5> 
 
+            </div>
+          </div>
+          <br />
+<div class="row">
+ 
+  
+  <div class="col-3" *ngFor="let item of showdata ; let i = index">
         <div class="card-deck" >
-            <div class="card"  *ngFor="let item of showdata ; let i = index">
+            <div class="card"  >
               <img src="assets\image\4.jpg" class="card-img-top" alt="...">
               <div class="card-body">
                   <h5 class="card-title">หมายเลขห้องพัก : {{item.Room_ID}} </h5>
@@ -65,7 +76,10 @@
             </div>
         
           </div>
-
+          <br />
+     
+        </div>
+        </div>
 
         <!-- <div class="card mb-3" *ngFor="let item of showdata ; let i = index">
             <img src="assets\image\4.jpg"  width="600" height="200px">
@@ -80,45 +94,7 @@
                   </button> 
             </div>
           </div> -->
-<div class="card" style="width: 60rem;">
-        <div class="card-body">
-     รายละเอียดการจองห้องพัก ให้จองล่วงหน้าอย่างน้อย 3 วัน และรอผลการจอง 2 วัน
-<!-- <table class="table table-bordered">
-        <thead>
-          <tr>
-            <th scope="col">หมายเลขห้องพัก</th>
-            <th scope="col">ประเภทห้องพัก</th>
-            <th scope="col">ชั้น</th>
-            <th scope="col">บริการ</th>
-            <th scope="col">ราคา</th>
-            <th scope="col">สถานะ</th>
-            <th scope="col">จัดการ</th>
-          </tr>
-        </thead>
-        <tbody *ngFor="let item of showdata ; let i = index">
-          <tr>
-            <td class="text-center">{{item.Room_ID}}</td>
-            <td>{{item.TroomName}}</td>
-            <td>{{item.floor}}</td>
-            <td>{{item.Decoration}}</td>
-            <td>{{item.Price}}</td>
-            <td>{{item.statusName}}</td>
-            <td >
 
-            
-<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal2"
-(click)="BookingModel(item.Room_ID,item.Troom_ID,item.floor,item.Decoration,item.statusName,item.Price)">
-    จองห้องพัก
-  </button>
-  
-
-  
-            </td>
-          </tr>
-        </tbody>
-      </table> -->
-        </div>
-      </div>
 
     </div>
 
@@ -137,33 +113,33 @@
                   <div class="col-md-4 mb-3">
                     <label for="validationDefault01">หมายเลขห้องพัก</label>
                     <input type="text" class="form-control" id="validationDefault01" 
-                      [formControl]="Room_ID">
+                      [formControl]="Room_ID" readonly>
                   </div>
                   <div class="col-md-4 mb-3">
                     <label for="validationDefault02">ประเภทห้องพัก</label>
                     <input type="text" class="form-control" id="validationDefault02"   
-                    [formControl]="Troom_ID">
+                    [formControl]="Troom_ID" readonly>
                   </div>
                   <div class="col-md-4 mb-3">
                     <label for="validationDefault03">ชั้นที่</label>
                     <div class="input-group" >
                    
-                      <input type="text" class="form-control" id="validationDefault03"   [formControl]="floor">
+                      <input type="text" class="form-control" id="validationDefault03"   [formControl]="floor" readonly>
                     </div>
                   </div>
                 </div>
                 <div class="form-row">
                   <div class="col-md-6 mb-3">
                     <label for="validationDefault04">บริการ</label>
-                    <input type="text" class="form-control" id="validationDefault04"   [formControl]="Decoration">
+                    <input type="text" class="form-control" id="validationDefault04"   [formControl]="Decoration" readonly>
                   </div>
                   <div class="col-md-6 mb-3">
                     <label for="validationDefault04">สถานะ</label>
-                    <input type="text" class="form-control" id="validationDefault55"   [formControl]="statusName">
+                    <input type="text" class="form-control" id="validationDefault55"   [formControl]="statusName" readonly> 
                   </div>
                   <div class="col-md-6 mb-3">
                     <label for="validationDefault04">ราคา</label>
-                    <input type="text" class="form-control" id="validationDefault88"   [formControl]="Price">
+                    <input type="text" class="form-control" id="validationDefault88"   [formControl]="Price" readonly>
                   </div>
                   <div class="col-md-6 mb-3">
                     <label for="validationDefault05">วันเข้าพัก</label>
